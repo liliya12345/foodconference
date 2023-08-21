@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.DateTimeException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -38,5 +37,7 @@ public class Order {
     private LifeStatusOfOrder lifeStatusOfOrder;
     private PaymentForm paymentForm;
     private PaymentStatus paymentStatus;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "order")
+    private List<OrderStatus> orderStatusList = new ArrayList<>();
 
 }

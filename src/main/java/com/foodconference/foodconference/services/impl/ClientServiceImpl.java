@@ -1,6 +1,6 @@
 package com.foodconference.foodconference.services.impl;
 
-import com.foodconference.foodconference.dto.ClientDtoResponce;
+import com.foodconference.foodconference.dto.ClientDtoResponse;
 import com.foodconference.foodconference.models.Client;
 import com.foodconference.foodconference.models.UserRole;
 import com.foodconference.foodconference.repositories.ClientRepository;
@@ -16,7 +16,7 @@ public class ClientServiceImpl implements ClientService {
     private final PasswordEncoder passwordEncoder;
     private final ClientToClientDtoResponseTransformer clientToClientDtoResponseTransformer;
     @Override
-    public ClientDtoResponce createClient(Client client) {
+    public ClientDtoResponse createClient(Client client) {
         client.setPassword(passwordEncoder.encode(client.getPassword()));
         client.getUserRoles().add(UserRole.ROLE_CLIENT);
         Client newClient = clientRepository.save(client);

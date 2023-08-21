@@ -1,6 +1,6 @@
 package com.foodconference.foodconference.controllers;
 
-import com.foodconference.foodconference.dto.ClientDtoResponce;
+import com.foodconference.foodconference.dto.ClientDtoResponse;
 import com.foodconference.foodconference.models.Client;
 import com.foodconference.foodconference.services.impl.ClientServiceImpl;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientController {
     private final ClientServiceImpl clientService;
     @PostMapping("/create")
-    public ResponseEntity<ClientDtoResponce> createNewClient(@RequestBody Client client){
-        ClientDtoResponce newClient = clientService.createClient(client);
+    public ResponseEntity<ClientDtoResponse> createNewClient(@RequestBody Client client){
+        ClientDtoResponse newClient = clientService.createClient(client);
         return  ResponseEntity.ok(newClient);
     }
 }
