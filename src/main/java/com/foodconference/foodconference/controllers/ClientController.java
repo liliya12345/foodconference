@@ -14,10 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/client")
 public class ClientController {
-    private final ClientServiceImpl clientService;
-    @PostMapping("/create")
-    public ResponseEntity<ClientDtoResponse> createNewClient(@RequestBody Client client){
-        ClientDtoResponse newClient = clientService.createClient(client);
-        return  ResponseEntity.ok(newClient);
-    }
+
 }

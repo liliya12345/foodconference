@@ -10,11 +10,10 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-public class ClientDtoResponse {
+public class CourierDtoResponse {
     private Long id;
     private String name;
     private String username;
-    private Set<UserRole> roleSet = new HashSet<>();
-    private List<UserContact> userContactList = new ArrayList<>();
-
+    private Set<UserRole> roleSet= new HashSet<>();
+    private List<UserContact> userContactList= new ArrayList<>();
 }

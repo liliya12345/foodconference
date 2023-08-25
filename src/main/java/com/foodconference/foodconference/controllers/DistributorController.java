@@ -11,13 +11,6 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RequestMapping("api/v1/distributor")
 public class DistributorController {
-    private final DistributorServiceImpl distributorService;
 
-    @PostMapping("/create")
-
-    public ResponseEntity<DistributorDtoResponse> createNewDistributor(@RequestBody Distributor distributor) {
-        DistributorDtoResponse newDistributor = distributorService.createDistributor(distributor);
-        return ResponseEntity.ok(newDistributor);
-    }
 
 }
