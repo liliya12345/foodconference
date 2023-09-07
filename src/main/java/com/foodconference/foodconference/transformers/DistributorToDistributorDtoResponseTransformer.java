@@ -11,6 +11,7 @@ public class DistributorToDistributorDtoResponseTransformer {
         distributorDtoResponse.setId(distributor.getId());
         distributorDtoResponse.setName(distributor.getName());
         distributorDtoResponse.setUsername(distributor.getUsername());
+        distributorDtoResponse.setApproved(distributor.getApproved());
         distributorDtoResponse.setRoleSet(distributor.getUserRoles());
         distributorDtoResponse.setUserContactList(distributor.getUserContactList());
         return distributorDtoResponse;

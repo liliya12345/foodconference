@@ -20,5 +20,6 @@ public class Distributor extends User {
     private String name;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "distributor")
     private List<Product> productList = new ArrayList<>();
-
+    @Column(name="approved")
+    private Boolean approved;
 }

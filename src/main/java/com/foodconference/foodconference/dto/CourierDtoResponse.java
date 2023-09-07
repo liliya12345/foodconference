@@ -4,6 +4,7 @@ import com.foodconference.foodconference.models.UserContact;
 import com.foodconference.foodconference.models.UserRole;
 import lombok.Data;
 
+import javax.persistence.Column;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +15,7 @@ public class CourierDtoResponse {
     private Long id;
     private String name;
     private String username;
-    private Set<UserRole> roleSet= new HashSet<>();
-    private List<UserContact> userContactList= new ArrayList<>();
+    private Boolean approved;
+    private Set<UserRole> roleSet = new HashSet<>();
+    private List<UserContact> userContactList = new ArrayList<>();
 }

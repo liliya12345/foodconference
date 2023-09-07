@@ -14,7 +14,9 @@ public class DistributorDtoResponse {
     private Long id;
     private String username;
     private String name;
+    private Boolean approved;
     private Set<UserRole> roleSet = new HashSet<>();
     private List<UserContact> userContactList = new ArrayList<>();
+
 
 }

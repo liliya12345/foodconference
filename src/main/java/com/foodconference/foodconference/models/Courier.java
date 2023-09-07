@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,4 +21,6 @@ public class Courier extends User {
     private List<OrderDetails> orderDetailsList = new ArrayList<>();
     @OneToMany(mappedBy = "courier")
     private List<DeliveryPlace> deliveryPlaceList = new ArrayList<>();
+    @Column(name = "approved")
+    private Boolean approved;
 }

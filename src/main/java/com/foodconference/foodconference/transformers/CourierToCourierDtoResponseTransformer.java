@@ -12,6 +12,7 @@ public class CourierToCourierDtoResponseTransformer {
         courierDtoResponse.setId(courier.getId());
         courierDtoResponse.setName(courier.getName());
         courierDtoResponse.setUsername(courier.getUsername());
+        courierDtoResponse.setApproved(courier.getApproved());
         courierDtoResponse.setRoleSet(courier.getUserRoles());
         courierDtoResponse.setUserContactList(courier.getUserContactList());
         return courierDtoResponse;
