@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class CourierServiceImpl implements CourierService {
@@ -28,7 +30,40 @@ public class CourierServiceImpl implements CourierService {
         newCourier.getUserRoles().add(UserRole.ROLE_COURIER);
         newCourier.setApproved(false);
         return courierToCourierDtoResponseTransformer
-                .transformCourier(courierRepository.save(newCourier));
+                .transform(courierRepository.save(newCourier));
 
     }
+
+    @Override
+    public boolean approved(Long courierId) {
+        Optional<Courier> byId = courierRepository.findById(courierId);
+        if (byId.isPresent()) {
+            Courier courier = byId.get();
+            courier.setApproved(true);
+            courierRepository.save(courier);
+            return true;
+        }
+        return false;
+    }
+
+
+    @Override
+    public boolean disapproved(Long courierId) {
+        Optional<Courier> byId = courierRepository.findById(courierId);
+        if (byId.isPresent()) {
+            Courier courier = byId.get();
+            courier.setApproved(false);
+            courierRepository.save(courier);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public CourierDtoResponse getById(Long courierId) {
+        Courier courier = courierRepository.findById(courierId).orElse(new Courier());
+        return courierToCourierDtoResponseTransformer.transform(courier);
+    }
+
+
 }

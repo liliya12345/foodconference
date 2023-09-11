@@ -27,6 +27,6 @@ public class ClientServiceImpl implements ClientService {
         client.setUsername(client.getUsername());
         client.getUserRoles().add(UserRole.ROLE_CLIENT);
         Client newClient = clientRepository.save(client);
-        return clientToClientDtoResponseTransformer.transformClient(newClient);
+        return clientToClientDtoResponseTransformer.transform(newClient);
     }
 }

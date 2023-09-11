@@ -1,12 +1,11 @@
 package com.foodconference.foodconference.transformers;
-
 import com.foodconference.foodconference.dto.UserRegistrationDto;
-import com.foodconference.foodconference.models.Client;
 import com.foodconference.foodconference.models.Courier;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserRegistrationDtoToCourierTransformer {
+public class UserRegistrationDtoToCourierTransformer extends Transformer<Courier, UserRegistrationDto> {
+    @Override
     public Courier transform(UserRegistrationDto courierDtoRequest) {
         Courier newCourier = new Courier();
         newCourier.setId(courierDtoRequest.getId());

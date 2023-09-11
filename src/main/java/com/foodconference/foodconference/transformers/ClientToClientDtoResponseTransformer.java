@@ -1,18 +1,18 @@
 package com.foodconference.foodconference.transformers;
-
 import com.foodconference.foodconference.dto.ClientDtoResponse;
 import com.foodconference.foodconference.models.Client;
 import org.springframework.stereotype.Component;
 
 @Component
-public class ClientToClientDtoResponseTransformer {
-    public ClientDtoResponse transformClient(Client client) {
-        ClientDtoResponse clientDtoResponce = new ClientDtoResponse();
-        clientDtoResponce.setId(client.getId());
-        clientDtoResponce.setName(client.getName());
-        clientDtoResponce.setUsername(client.getUsername());
-        clientDtoResponce.setRoleSet(client.getUserRoles());
-        clientDtoResponce.setUserContactList(client.getUserContactList());
-        return clientDtoResponce;
+public class ClientToClientDtoResponseTransformer extends Transformer<ClientDtoResponse, Client> {
+    @Override
+    public ClientDtoResponse transform(Client client) {
+        ClientDtoResponse clientDtoResponse = new ClientDtoResponse();
+        clientDtoResponse.setId(client.getId());
+        clientDtoResponse.setName(client.getName());
+        clientDtoResponse.setUsername(client.getUsername());
+        clientDtoResponse.setRoleSet(client.getUserRoles());
+        clientDtoResponse.setUserContactList(client.getUserContactList());
+        return clientDtoResponse;
     }
 }

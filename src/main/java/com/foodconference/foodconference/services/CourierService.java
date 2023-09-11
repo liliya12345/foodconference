@@ -1,10 +1,13 @@
 package com.foodconference.foodconference.services;
-
-import com.foodconference.foodconference.dto.ClientDtoResponse;
 import com.foodconference.foodconference.dto.CourierDtoResponse;
 import com.foodconference.foodconference.dto.UserRegistrationDto;
-import com.foodconference.foodconference.models.Courier;
 
 public interface CourierService {
     CourierDtoResponse createNewCourier (UserRegistrationDto courier);
+
+    boolean approved(Long courierId);
+
+    boolean disapproved(Long courierId);
+
+    CourierDtoResponse getById(Long courierId);
 }

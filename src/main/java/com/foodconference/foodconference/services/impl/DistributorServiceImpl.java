@@ -32,22 +32,45 @@ public class DistributorServiceImpl implements DistributorService {
         newDistributor.getUserRoles().add(UserRole.ROLE_DISTRIBUTOR);
         newDistributor.setApproved(false);
         return distributorToDistributorDtoResponseTransformer
-                .transformDistributor(distributorRepository.save(newDistributor));
+                .transform(distributorRepository.save(newDistributor));
     }
 
     @Override
     public Page<DistributorDtoResponse> getAllDistributors(Pageable pageable) {
         Page<Distributor> pageDistributors = distributorRepository.findAll(pageable);
-        return pageDistributors.map(distributorToDistributorDtoResponseTransformer::transformDistributor);
+        return pageDistributors.map(distributorToDistributorDtoResponseTransformer::transform);
     }
 
     @Override
-    public DistributorDtoResponse approved(Long distributorId) {
+    public Boolean approved(Long distributorId) {
         Optional<Distributor> byId = distributorRepository.findById(distributorId);
-        Distributor distributor = byId.orElseThrow(() -> new RuntimeException("not found distributor"));
-        distributor.setApproved(true);
-        Distributor distributorSave = distributorRepository.save(distributor);
-        return distributorToDistributorDtoResponseTransformer.transformDistributor(distributorSave);
+        if (byId.isPresent()) {
+            Distributor distributor = byId.get();
+            distributor.setApproved(true);
+            distributorRepository.save(distributor);
+            return true;
+        }
+        return false;
 
     }
+
+    @Override
+    public DistributorDtoResponse getById(Long distributorId) {
+        Distributor distributor = distributorRepository.findById(distributorId).orElse(new Distributor());
+        return distributorToDistributorDtoResponseTransformer.transform(distributor);
+    }
+
+    @Override
+    public boolean disapproved(Long distributorId) {
+        Optional<Distributor> byId = distributorRepository.findById(distributorId);
+        if (byId.isPresent()) {
+            Distributor distributor = byId.get();
+            distributor.setApproved(false);
+            distributorRepository.save(distributor);
+            return true;
+        }
+        return false;
+    }
+
+
 }
