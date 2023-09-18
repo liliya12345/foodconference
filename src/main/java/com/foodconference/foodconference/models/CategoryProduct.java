@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "category_menu")
+@Table(name = "category_products")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryMenu {
+public class CategoryProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;

@@ -72,5 +72,16 @@ public class DistributorServiceImpl implements DistributorService {
         return false;
     }
 
+    @Override
+    public Boolean checkDistributorApprovedAndExist(Long distributorId) {
+        Optional<Distributor> byId = distributorRepository.findById(distributorId);
+        if (!byId.isPresent()) {
+            return false;
+        }
+        if (byId.get().getApproved()) {
+            return true;
+        } else return false;
+    }
+
 
 }

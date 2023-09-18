@@ -1,4 +1,5 @@
 package com.foodconference.foodconference.services;
+
 import com.foodconference.foodconference.dto.DistributorDtoResponse;
 import com.foodconference.foodconference.dto.UserRegistrationDto;
 import org.springframework.data.domain.Page;
@@ -16,4 +17,6 @@ public interface DistributorService {
     DistributorDtoResponse getById(Long distributorId);
 
     boolean disapproved(Long distributorId);
+
+    Boolean checkDistributorApprovedAndExist(Long distributorId);
 }

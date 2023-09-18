@@ -26,7 +26,7 @@ public class Product {
     @Column(name = "unit_measure")
     private Double unitMeasure;
     @ManyToOne(cascade = CascadeType.REFRESH)
-    private CategoryMenu category;
+    private CategoryProduct category;
     @ManyToOne(cascade = CascadeType.REFRESH)
     private Distributor distributor;
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
