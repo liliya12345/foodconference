@@ -3,6 +3,7 @@ package com.foodconference.foodconference.services.impl;
 import com.foodconference.foodconference.dto.DistributorDtoResponse;
 import com.foodconference.foodconference.dto.UserRegistrationDto;
 import com.foodconference.foodconference.models.Distributor;
+import com.foodconference.foodconference.models.User;
 import com.foodconference.foodconference.models.UserRole;
 import com.foodconference.foodconference.repositories.DistributorRepository;
 import com.foodconference.foodconference.services.DistributorService;
@@ -73,12 +74,16 @@ public class DistributorServiceImpl implements DistributorService {
     }
 
     @Override
-    public Boolean checkDistributorApprovedAndExist(Long distributorId) {
-        Optional<Distributor> byId = distributorRepository.findById(distributorId);
-        if (!byId.isPresent()) {
+    public Boolean checkDistributorApprovedAndExist(Optional<User> optionalUser) {
+        if (!optionalUser.isPresent()) {
             return false;
         }
-        if (byId.get().getApproved()) {
+        User user = optionalUser.get();
+        boolean roleDistributor = user.getUserRoles().stream()
+                .anyMatch(userRole -> userRole.getAuthority().equals("ROLE_DISTRIBUTOR"));
+        if(!roleDistributor) return false;
+        Distributor distributor = (Distributor) user;
+        if (distributor.getApproved()) {
             return true;
         } else return false;
     }

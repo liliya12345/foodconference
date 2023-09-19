@@ -23,12 +23,12 @@ public class ProductDtoRequestToProductTransformer extends Transformer<Product, 
         product.setId(productDtoRequest.getId());
         product.setName(productDtoRequest.getName());
         product.setCategory(categoryProductRepository.findById(productDtoRequest.getCategoryId()).orElse(null));
-        product.setDistributor(distributorRepository.findById(21L).orElse(null));
         product.setDescription(productDtoRequest.getDescription());
         Price price = new Price();
         price.setActive(true);
         price.setPrice(productDtoRequest.getPrice());
         price.setStartTime(LocalDateTime.now());
+        price.setProduct(product);
         List<Price> priceList = product.getPriceList();
         priceList.add(price);
         product.setPriceList(priceList);

@@ -2,8 +2,12 @@ package com.foodconference.foodconference.services;
 
 import com.foodconference.foodconference.dto.DistributorDtoResponse;
 import com.foodconference.foodconference.dto.UserRegistrationDto;
+import com.foodconference.foodconference.models.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+
+import javax.swing.text.html.Option;
+import java.util.Optional;
 
 
 public interface DistributorService {
@@ -18,5 +22,5 @@ public interface DistributorService {
 
     boolean disapproved(Long distributorId);
 
-    Boolean checkDistributorApprovedAndExist(Long distributorId);
+    Boolean checkDistributorApprovedAndExist(Optional<User> user);
 }
