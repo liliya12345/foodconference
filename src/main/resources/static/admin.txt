@@ -5,3 +5,7 @@
     "username":"DistrubutorLiliya",
     "password":"Liliya123$%",
     "name":"DistrubutorLiliya"
+
+  client
+      "username":"Mac12345",
+        "password":"12345!Asl"
