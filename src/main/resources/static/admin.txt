@@ -1,0 +1,11 @@
+"username":"AdminLiliya",
+"password":"AdminLiliya12#",
+
+
+    "username":"DistrubutorLiliya",
+    "password":"Liliya123$%",
+    "name":"DistrubutorLiliya"
+
+  client
+      "username":"Mac12345",
+        "password":"12345!Asl"

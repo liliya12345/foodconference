@@ -10,26 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "cities")
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "products")
-public class Product {
+@NoArgsConstructor
+
+public class City {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private String name;
-    @Column
-    private String description;
-    @Column(name = "unit_measure")
-    private Double unitMeasure;
-    @ManyToOne(cascade = CascadeType.REFRESH)
-    private CategoryProduct category;
+    private String city;
     @ManyToOne(cascade = CascadeType.REFRESH)
     private Distributor distributor;
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "product")
-    private List<Price> priceList = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "city")
+    private List<DeliveryPlace> deliveryPlaces = new ArrayList<>();
 
 }

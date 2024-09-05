@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+##ADMIN##
+!**/src/main/resources/static/admin.txt

@@ -19,7 +19,8 @@ public class DeliveryPlace {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String city;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private City city;
     private String street;
     private String building;
     private String postcode;

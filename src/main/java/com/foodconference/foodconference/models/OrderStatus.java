@@ -19,4 +19,6 @@ public class OrderStatus {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime dateChangeStatus;
+    @ManyToOne(cascade = CascadeType.REFRESH)
+    private Order order;
 }

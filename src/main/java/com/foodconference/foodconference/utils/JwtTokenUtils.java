@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 @Controller
 public class JwtTokenUtils {
-    @Value("Liliya123")
+    @Value("${jwt.secret}")
     private String secret;
     @Value("30m")
     private Duration jwtLifeTime;

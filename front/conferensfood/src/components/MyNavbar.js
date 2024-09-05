@@ -17,7 +17,7 @@ export default function MyNavbar() {
 
     function handleLogin(e) {
       e.preventDefault();
-      axios.post("http://localhost:8082/auth",{
+      axios.post("http://localhost:8080/auth",{
           "username":login,
           "password":password
       })
