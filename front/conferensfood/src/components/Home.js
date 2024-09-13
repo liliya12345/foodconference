@@ -1,22 +1,20 @@
 import React from "react";
-import MyNavbar from "./MyNavbar";
 import Search from "./Search";
 import Hero from "./Hero";
 import Features from "./Features";
 import Shop from "./Shop";
 import Footer from "./Footer";
 import Copyright from "./Copyright";
-import FreshOrganicShop from "./FreshOrganicShop";
 import Banner from "./Banner";
-import OrganicShop from "./OrganicShop";
 import Bestsaler from "./Bestsaler";
 import FactStart from "./FactStart";
 import Tastimonial from "./Tastimonial";
+import MyNavbar2 from "./MyNavbar2";
 
 export default function Home() {
     return (
         <>
-            <MyNavbar/>
+            <MyNavbar2/>
             <Search/>
             <Hero/>
             <Features/>

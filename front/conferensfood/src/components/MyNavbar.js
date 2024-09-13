@@ -3,7 +3,7 @@ import {Button, Container, Navbar} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
-import LanguagesAndLoggin from "./LanguagesAndLoggin";
+import Languages from "./Languages";
 
 export default function MyNavbar() {
     const [show, setShow] = useState(false);
@@ -103,7 +103,7 @@ export default function MyNavbar() {
                                 {/*>*/}
                                 {/*    <i className="fas fa-search text-primary"></i>*/}
                                 {/*</button>*/}
-                                <LanguagesAndLoggin/>
+                                <Languages/>
                                 {/*<a href="#" className="position-relative me-4 my-auto">*/}
                                 {/*    <i className="fa fa-shopping-bag fa-2x"></i>*/}
                                     {/* <span
