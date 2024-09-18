@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Container, Row} from "react-bootstrap";
+import {Container, Row} from "react-bootstrap";
 import HeaderComponent2 from "./HeaderComponent2";
 import Languages from "./Languages";
 import Logo2 from "./Logo2";
@@ -16,16 +16,16 @@ function MyNavbar2(props) {
                 <Row>
                     <HeaderComponent2/>
                 </Row>
-                <Row className="my-3 justify-content-center" >
-                    <Col sm="5">
+                <Row >
+                    <div className="col-md-7 p-1">
                      <Logo2/>
-                    </Col>
-                    <Col sm="3">
+                    </div>
+                    <div className="col-md-2 p-2">
                         <Languages/>
-                    </Col>
-                    <Col sm="4">
+                    </div>
+                    <div className="col-md-3 p-1">
                         <LoginButton2/>
-                    </Col>
+                    </div>
                 </Row>
             </Container>
         </>

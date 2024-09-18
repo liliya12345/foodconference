@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, Container, Navbar} from "react-bootstrap";
+import {Container, Navbar} from "react-bootstrap";
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import axios from 'axios';
@@ -148,12 +148,7 @@ export default function MyNavbar() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary" onClick={handleLogin}>
-                        Logga in
-                    </Button>
+
                 </Modal.Footer>
             </Modal>
         </>

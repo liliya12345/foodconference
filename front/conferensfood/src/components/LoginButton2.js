@@ -5,20 +5,32 @@ function LoginButton2(props) {
     return (
         <>
             <Container>
-                <div className="row justify-content-end">
-                    <div className="col">
-                        <Button variant="secondary" className="mx-2">
-                            Close
-                        </Button>
-                    </div>
-                    <div className="col">
-                        <Button variant="primary">
-                            Logga in
-                        </Button>
+
+                {/*<Col md-8>*/}
+                {/*        <Button variant="secondary" >*/}
+                {/*            Close*/}
+                {/*        </Button>*/}
+                {/*    </Col>*/}
+                {/*<Col md-8>*/}
+                {/*        <Button variant="primary">*/}
+                {/*            Logga in*/}
+                {/*        </Button>*/}
+                {/*</Col>*/}
+
+                <div className="container">
+                    <div className="d-flex justify-content-end">
+                        <div className="p-1">
+                            <Button variant="primary">
+                                Loggin
+                            </Button>
+                        </div>
+                        <div className="p-1">
+                            <Button variant="secondary">
+                                Registrera dig
+                            </Button>
+                        </div>
                     </div>
                 </div>
-
-
 
             </Container>
 

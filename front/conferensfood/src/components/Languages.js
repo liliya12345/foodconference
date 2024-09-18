@@ -9,7 +9,6 @@ function Languages(props) {
         <>
             <Container>
                 <Row>
-                    <Col sm={9}></Col>
                     <Col className ="align-item-end" sm={1}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                              fill="none">
@@ -19,11 +18,12 @@ function Languages(props) {
                         </svg>
 
                     </Col>
-                    <Col  className ="align-items-center" sm={2}>
-                        <DropdownButton id="dropdown-basic-button" title="SV">
+                    <Col className="align-items-center" sm={2}>
+                        <DropdownButton variant="none" id="dropdown-basic" title="SV" size="sm">
                             <Dropdown.Item>SV</Dropdown.Item>
                             <Dropdown.Item>EN</Dropdown.Item>
                         </DropdownButton>
+
                     </Col>
                 </Row>
             </Container>
