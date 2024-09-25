@@ -16,6 +16,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Client extends User {
+    @Column (name = "is_private")
+    private Boolean isPrivate;
+    @Column (name = "surname")
+    private String surname;
+    @Column (name = "address")
+    private String address;
+    @Column (name = "zipcode")
+    private Integer zipcode;
     @Column
     private String name;
     @OneToMany(mappedBy = "client")

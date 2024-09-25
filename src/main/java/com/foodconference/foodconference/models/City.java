@@ -26,4 +26,5 @@ public class City {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "city")
     private List<DeliveryPlace> deliveryPlaces = new ArrayList<>();
 
+
 }

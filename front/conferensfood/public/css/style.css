@@ -33,6 +33,11 @@
     font-weight: 600;
     transition: .5s;
 }
+.dropdown-toggle-avatar{
+    /*url('../img/avatar.jpg');*/
+    background-size: contain;
+
+}
 
 .btn-square {
     width: 32px;
@@ -68,6 +73,8 @@
 .btn.border-secondary {
     transition: 0.5s;
 }
+/*.border{border:1px solid #f4f6f8*/
+/*}*/
 
 .btn.border-secondary:hover {
     background: var(--bs-secondary) !important;
@@ -80,6 +87,25 @@
 .border-secondary-choose:hover{
     background: limegreen !important;
     color:limegreen !important;
+}
+.btn.border-third {
+    transition: 0.5s;
+    background-color:#f4f6f8;
+    color: #45595b;
+    font-size:14px;
+}
+
+.btn.border-third:hover {
+    background: #FFB524 !important;
+    color: var(--bs-white) !important;
+}
+.border-third-choose{
+    background: #ffffff !important;
+    color:white !important;
+}
+.border-third-choose:hover{
+    background: #f4673c !important;
+    color: #0c0c0c !important;
 }
 
 /*** Topbar Start ***/
@@ -193,10 +219,16 @@
     background-repeat: no-repeat;
     background-size: cover;
 }
-.modal-content{
+
+.modals-form{
+    flex-direction:row;
+   display: flex;
+    width: 100%;
+    height: auto;
+}
+.modal-body{
     flex-direction:row;
 }
-
 .carousel-item {
     position: relative;
 }
@@ -526,4 +558,72 @@
 .span-text{
     font-size: 14px;
 }
+.skor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.text-label{
+  font-size:14px;
+}
+.deliverys{
+ display: flex;
+    justify-content: center;
+
+}
+.your-place{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size:12px;
+}
+.search-city{
+    font-size:10px;
+}
+.search-city-text{
+    font-size:10px;
+}
+.text-options{
+    font-size: 10px;
+    text-decoration-style: solid;
+}
+.text-options-second{
+    font-size: 12px;
+}
+
+.btn-option{
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.00);
+    box-shadow: 0px 0px 0px 1.55px #122424 inset;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.du{
+    width: 400px;
+}
+.ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+.nav2{
+    list-style-type:none;
+}
+.coldplay{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.description-text{
+    font-size: 11px;
+}
+
 

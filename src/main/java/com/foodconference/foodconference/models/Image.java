@@ -27,6 +27,10 @@ public class Image {
     private Long size;
     @Lob
     private byte[] bytes;
+    @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
+    private User user;
+    @Column(name="active")
+    private Boolean active;
 
 
 

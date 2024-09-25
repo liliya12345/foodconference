@@ -31,7 +31,8 @@ public class User implements UserDetails {
     private Set<UserRole> userRoles = new HashSet<>();
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserContact> userContactList = new ArrayList<>();
-
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user",fetch = FetchType.LAZY)
+    private List<Image> userImages = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
