@@ -15,10 +15,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -28,6 +26,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
+@CrossOrigin("http://localhost:3000/")
 @RequestMapping("/api/registration")
 public class RegistrationController {
     private final ClientServiceImpl clientService;
@@ -36,7 +35,7 @@ public class RegistrationController {
     private final UserRegistrationValidator userRegistrationValidator;
 
     @PostMapping("/client")
-    public ResponseEntity<?> createNewClient(@RequestBody @Valid UserRegistrationDto client, BindingResult bindingResult) {
+    public ResponseEntity<?> createNewClient(UserRegistrationDto client, BindingResult bindingResult,MultipartFile multipartFile) {
         userRegistrationValidator.validate(client,bindingResult);
         if (!bindingResult.hasErrors()) {
             ClientDtoResponse newClient = clientService.createClient(client);
@@ -74,5 +73,9 @@ public class RegistrationController {
         errors = bindingResult.getFieldErrors().stream().collect(Collectors.toMap(FieldError::getField, DefaultMessageSourceResolvable::getDefaultMessage, (a, b) -> b));
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
+//    @PostMapping("/test")
+//    public ResponseEntity<?> test(@RequestBody MultipartFile multipartFile){
+//        return null;
+//    }
 
 }

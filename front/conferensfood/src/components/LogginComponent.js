@@ -17,7 +17,6 @@ export default function LogginComponent( {uppdateIsAuth}) {
 
     }
 
-
     function handleLogin(e) {
         e.preventDefault();
         axios.post("http://localhost:8080/auth", {

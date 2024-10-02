@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
-import deliveryman from "./img/custom_img_960x1250_crop_center.webp";
+import deliveryman from "../img/custom_img_960x1250_crop_center.webp";
 import Form from "react-bootstrap/Form";
 import {Icon} from "react-icons-kit";
 import axios from "axios";
@@ -12,6 +12,8 @@ export default function RegistrationComponent(props) {
     const [showSecond, setShowSecond] = useState(false);
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
+    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [showPass, setShowPass] = useState(false);
     const clickHandler = () => {
         setShowPass((prev) => !prev);
@@ -19,19 +21,18 @@ export default function RegistrationComponent(props) {
     const [type, setType] = useState('password');
     const [icon, setIcon] = useState(eyeOff);
     const handleClose = () => setShow(false);
+    const handleCloseSecond = () => setShowSecond(false);
 
     const [auth, setAuth] = useState("false");
     const [company, setCompany] = useState(false)
-
+    const [img, setImg] = useState();
+    const handleInsert = (e) => {
+        setImg(e.target.files[0]);
+        console.log(e.target.files[0]);
+    }
 
     function onOptionChange() {
         setCompany(true);
-        console.log(company);
-
-    }
-
-    function onOptionChange2() {
-        setCompany(false);
         console.log(company);
 
     }
@@ -47,19 +48,22 @@ export default function RegistrationComponent(props) {
     }
 
 
-    function handleLogin(e) {
-        e.preventDefault();
-        axios.post("http://localhost:8080/auth", {
-            "username": login, "password": password
-        })
+    function handleRegistration() {
+        console.log(name);
+        console.log(username);
+        axios.post("http://localhost:8080/api/registration/client", {
+                "username": username, "password": password, "name":name,
+                "multipartFile": img
+            }, {
+                headers: {'content-type':'multipart/form-data'}
+            }
+        )
             .then(function (response) {
-                // console.log(response.data.token)
-                localStorage.setItem("token", response.data.token)
-                setAuth("true");
-                localStorage.setItem("auth", auth);
-                handleClose();
+
+                handleCloseSecond();
             })
             .catch(function (err) {
+                console.log(err);
                 alert("Wrong username or password! ")
             })
     }
@@ -93,7 +97,7 @@ export default function RegistrationComponent(props) {
                                         <div className="form-check d-inline-block m-2">
                                             <input className="form-check-input" type="radio"
                                                    name="flexRadioDefault" id="flexRadioDefault1"
-                                                   onChange={onOptionChange2}/>
+                                                   onChange={onOptionChange}/>
                                             <label className="form-check-label"
                                                    htmlFor="flexRadioDefault1">
                                                 Företag
@@ -103,9 +107,9 @@ export default function RegistrationComponent(props) {
                                             <>
                                                 <Form.Group controlId="exampleForm.ControlInput1">
                                                     <Form.Label className="text-label">Företagsnamn</Form.Label>
-                                                    <Form.Control
-                                                        type="text"
-                                                        autoFocus
+                                                    <Form.Control onChange={(e) => setName(e.target.value)}
+                                                                  type="text"
+                                                                  autoFocus
 
                                                     />
                                                     <Form.Label className="text-label">Adress</Form.Label>
@@ -133,11 +137,11 @@ export default function RegistrationComponent(props) {
                                                     </div>
 
 
-                                                    <Form.Label className="text-label">Bransch</Form.Label>
-                                                    <Form.Control
-                                                        type="text"
-                                                        autoFocus
-                                                    />
+                                                    {/*<Form.Label className="text-label">Bransch</Form.Label>*/}
+                                                    {/*<Form.Control*/}
+                                                    {/*    type="text"*/}
+                                                    {/*    autoFocus*/}
+                                                    {/*/>*/}
                                                     <Form.Label className="text-label">Förnamn</Form.Label>
                                                     <Form.Control
                                                         type="text"
@@ -149,15 +153,11 @@ export default function RegistrationComponent(props) {
                                                         autoFocus
                                                     />
                                                     <Form.Label className="text-label">Änvänsnamn</Form.Label>
-                                                    <Form.Control
-                                                        type="text"
-                                                        autoFocus
+                                                    <Form.Control onChange={(e) => setUsername(e.target.value)}
+                                                                  type="text"
+                                                                  autoFocus
                                                     />
-                                                    <Form.Label className="text-label">Efternamn</Form.Label>
-                                                    <Form.Control
-                                                        type="text"
-                                                        autoFocus
-                                                    />
+
                                                     <Form.Label className="text-label">Enter your email</Form.Label>
                                                     <Form.Control
                                                         type="text"
@@ -173,9 +173,9 @@ export default function RegistrationComponent(props) {
                                             <>
                                                 <Form.Group controlId="exampleForm.ControlInput1">
                                                     <Form.Label className="text-label">Förnamn</Form.Label>
-                                                    <Form.Control
-                                                        type="text"
-                                                        autoFocus
+                                                    <Form.Control onChange={(e) => setName(e.target.value)}
+                                                                  type="text"
+                                                                  autoFocus
                                                     />
                                                     <Form.Label className="text-label">Efternamn</Form.Label>
                                                     <Form.Control
@@ -205,9 +205,9 @@ export default function RegistrationComponent(props) {
                                                     </div>
 
                                                     <Form.Label className="text-label">Änvänsnamn</Form.Label>
-                                                    <Form.Control
-                                                        type="text"
-                                                        autoFocus
+                                                    <Form.Control onChange={(e) => setUsername(e.target.value)}
+                                                                  type="text"
+                                                                  autoFocus
                                                     />
 
                                                     <Form.Label className="text-label">Enter your email</Form.Label>
@@ -238,9 +238,21 @@ export default function RegistrationComponent(props) {
 
 
                                         </Form.Group>
+
+                                        <Form.Group className="mb-1" controlId="exampleForm.ControlInput3">
+                                            <Form.Label className="text-label">Ladda din bild</Form.Label>
+
+                                            <Form.Control
+                                                onChange={handleInsert}
+                                                type="file">
+
+                                            </Form.Control>
+
+
+                                        </Form.Group>
                                         <Form.Group>
                                             <div className=" deliverys">
-                                                <button type=" submit"
+                                                <button type=" submit" onClick={handleRegistration}
                                                         className=" btn btn-primary border-secondary py-1  rounded-pill text-white
                                                 text-primary"
                                                         style={{top: "0", right: "25%",}}>

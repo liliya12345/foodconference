@@ -2,12 +2,14 @@ import React, {useState} from 'react';
 import Modal from "react-bootstrap/Modal";
 import deliveryman from "../img/custom_img_960x1250_crop_center.webp";
 import Form from "react-bootstrap/Form";
+import axios from "axios";
 
 export default function ModalRegistrering(props) {
 
     const [show, setShow] = useState(false);
     const [showSecond, setShowSecond] = useState(false);
     const [login, setLogin] = useState("");
+    const [name, setName]=useState("");
     const [password, setPassword] = useState("");
     const [showPass, setShowPass] = useState(false);
     const clickHandler = () => {
@@ -30,6 +32,20 @@ export default function ModalRegistrering(props) {
         setCompany(false);
         console.log(company);
 
+    }
+
+    function handleRegistration() {
+       console.log("this is...")
+        axios.post("http://localhost:8080/api/registration/client", {
+            "username": login, "password": password, "name":name
+        })
+            .then(function (response) {
+
+                handleCloseSecond();
+            })
+            .catch(function (err) {
+                alert("Wrong username or password! ")
+            })
     }
 
     return (
@@ -71,7 +87,7 @@ export default function ModalRegistrering(props) {
                                             <>
                                                 <Form.Group controlId="exampleForm.ControlInput1">
                                                     <Form.Label className="text-label">Företagsnamn</Form.Label>
-                                                    <Form.Control onChange={(e) => setLogin(e.target.value)}
+                                                    <Form.Control onChange={(e) => setName(e.target.value)}
                                                                   type="text"
                                                                   autoFocus
 
@@ -202,12 +218,23 @@ export default function ModalRegistrering(props) {
 
 
                                         </Form.Group>
+                                        <Form.Group className="mb-1" controlId="exampleForm.ControlInput3">
+                                            <Form.Label className="text-label">Ladda din bild</Form.Label>
+
+                                            <Form.Control
+
+                                                type="file">
+
+                                            </Form.Control>
+
+
+                                        </Form.Group>
                                         <Form.Group>
                                             <div className=" deliverys">
-                                                <button type=" submit"
+                                                <button
                                                         className=" btn btn-primary border-secondary py-1  rounded-pill text-white
                                                 text-primary"
-                                                        style={{top: "0", right: "25%",}} >
+                                                        style={{top: "0", right: "25%",}} onClick={handleRegistration} >
                                                     REGISTRERA
                                                 </button>
                                             </div>
